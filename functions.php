@@ -49,19 +49,19 @@ function is_proxy_or_vpn(): bool
     return false;
 }
 
-function verify_recaptcha(string $captchaResponse): bool
+function verify_turnstile(string $captchaResponse): bool
 {
     if ($captchaResponse === '') {
         return false;
     }
 
     $postData = http_build_query([
-        'secret' => RECAPTCHA_SECRET_KEY,
+        'secret' => TURNSTILE_SECRET_KEY,
         'response' => $captchaResponse,
         'remoteip' => client_ip(),
     ]);
 
-    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+    $ch = curl_init('https://challenges.cloudflare.com/turnstile/v0/siteverify');
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_POST => true,
@@ -77,7 +77,7 @@ function verify_recaptcha(string $captchaResponse): bool
     }
 
     $result = json_decode($response, true);
-    return !empty($result['success']);
+    return !empty($result['success']) && empty($result['error-codes']);
 }
 
 function create_claim_token(string $ip): string
