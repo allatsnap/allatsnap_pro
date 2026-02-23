@@ -8,7 +8,7 @@ unset($_SESSION['flash_message']);
 <head>
     <meta charset="UTF-8">
     <title>Claim Account</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
     <h1>Claim Service Account</h1>
@@ -23,8 +23,8 @@ unset($_SESSION['flash_message']);
     <?php endif; ?>
 
     <form action="generate.php" method="post">
-        <p>Complete reCAPTCHA to continue.</p>
-        <div class="g-recaptcha" data-sitekey="<?= e(RECAPTCHA_SITE_KEY) ?>"></div>
+        <p>Complete Cloudflare captcha to continue.</p>
+        <div class="cf-turnstile" data-sitekey="<?= e(TURNSTILE_SITE_KEY) ?>"></div>
         <br>
         <button type="submit" name="start_claim" value="1">Start Claim</button>
     </form>
