@@ -1,9 +1,10 @@
+# allatsnap_pro
 # AllAtSnap Pro - Account Claim Website (PHP + MySQL)
 
 ## Setup
 1. Upload files to your PHP hosting (InfinityFree compatible).
 2. Import `schema.sql` into MySQL.
-3. Update database and reCAPTCHA settings in `config.php`.
+3. Update database and Cloudflare Turnstile settings in `config.php`.
 4. Update `BASE_URL`, `SHORTLINK_URL`, and `TOKEN_SECRET`.
 5. Login to admin panel at `/admin/login.php` (default in schema).
 
