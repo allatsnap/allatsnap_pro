@@ -9,9 +9,9 @@ define('DB_PORT', 3306);
 // Site URL (without trailing slash), used for callback URLs and token signing context
 define('BASE_URL', 'https://yourdomain.com');
 
-// Google reCAPTCHA v2 keys
-define('RECAPTCHA_SITE_KEY', 'YOUR_RECAPTCHA_SITE_KEY');
-define('RECAPTCHA_SECRET_KEY', 'YOUR_RECAPTCHA_SECRET_KEY');
+// Cloudflare Turnstile keys
+define('TURNSTILE_SITE_KEY', 'YOUR_TURNSTILE_SITE_KEY');
+define('TURNSTILE_SECRET_KEY', 'YOUR_TURNSTILE_SECRET_KEY');
 
 // Shortlink target. Use {TOKEN} placeholder.
 // Example: https://short.example.com/go?token={TOKEN}
