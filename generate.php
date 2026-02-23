@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['start_claim'])) {
         exit;
     }
 
-    $captchaResponse = $_POST['g-recaptcha-response'] ?? '';
-    if (!verify_recaptcha($captchaResponse)) {
-        $_SESSION['flash_message'] = 'reCAPTCHA verification failed.';
+    $captchaResponse = $_POST['cf-turnstile-response'] ?? '';
+    if (!verify_turnstile($captchaResponse)) {
+        $_SESSION['flash_message'] = 'Cloudflare Turnstile verification failed.';
         header('Location: index.php');
         exit;
     }
